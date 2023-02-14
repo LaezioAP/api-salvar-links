@@ -4,6 +4,7 @@ const knex = require("../../config/knex");
 const cadastrarUrl = async (req, res) => {
   const { urlEnviada } = req.body;
 
+  // PUPPETEER
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(urlEnviada);
@@ -15,6 +16,7 @@ const cadastrarUrl = async (req, res) => {
   );
   await browser.close();
 
+  // BANCO DE DADOS
   try {
     const newRegister = await knex("links_salvos").insert({
       url: urlEnviada,
