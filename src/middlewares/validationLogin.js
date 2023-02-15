@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const knex = require("../config/knex");
 
-const loginValidation = async (req, res) => {
+const loginValidation = async (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) return res.status(401).json("Não autorizado");

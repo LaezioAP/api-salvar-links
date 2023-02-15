@@ -3,6 +3,7 @@ const knex = require("../../config/knex");
 
 const registerUrl = async (req, res) => {
   const { url } = req.body;
+  const { userLogged } = req;
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
@@ -15,6 +16,7 @@ const registerUrl = async (req, res) => {
 
   try {
     const newRegister = await knex("links_salvos").insert({
+      usuario_id: userLogged.id,
       url,
       title: pageContent.title,
     });

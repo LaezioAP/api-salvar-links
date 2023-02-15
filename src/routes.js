@@ -7,19 +7,19 @@ const { urlInvalid } = require("./middlewares/urlInvalid");
 const { loginValidation } = require("./middlewares/validationLogin");
 const { registerUser } = require("./controladores/registerUser");
 const { loginUser } = require("./controladores/userLogin");
-const rotas = express();
+const routes = express();
 
-rotas.post("/cadastrar-usuario", registerUser);
-rotas.post("/login", loginUser);
+routes.post("/cadastrar-usuario", registerUser);
+routes.post("/login", loginUser);
 
-rotas.use(loginValidation);
+routes.use(loginValidation);
 
-rotas.get("/home", getDados);
+routes.get("/home", getDados);
 
-rotas.post("/adicionar-url", urlInvalid, registerUrl);
+routes.post("/adicionar-url", urlInvalid, registerUrl);
 
-rotas.put("/home/:id", urlInvalid, updateRegister);
+routes.put("/home/:id", urlInvalid, updateRegister);
 
-rotas.delete("/home/:id", deleteRegister);
+routes.delete("/home/:id", deleteRegister);
 
-module.exports = rotas;
+module.exports = routes;
