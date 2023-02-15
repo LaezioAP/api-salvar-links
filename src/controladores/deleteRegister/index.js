@@ -1,6 +1,6 @@
 const knex = require("../../config/knex");
 
-const excluirDado = async (req, res) => {
+const deleteRegister = async (req, res) => {
   const { id } = req.params;
   try {
     await knex("links_salvos").del().where("id", id);
@@ -10,4 +10,4 @@ const excluirDado = async (req, res) => {
   }
 };
 
-module.exports = { excluirDado };
+module.exports = { deleteRegister };

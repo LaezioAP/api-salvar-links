@@ -1,10 +1,10 @@
 const express = require("express");
-const rotas = require("./rotas");
+const routes = require("./routes");
 const app = express();
 
-const PORTA = 3000;
+const PORT = 3000;
 
 app.use(express.json());
-app.use(rotas);
+app.use(routes);
 
-app.listen(PORTA);
+app.listen(PORT);

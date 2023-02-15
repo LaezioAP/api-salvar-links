@@ -1,22 +1,21 @@
 const puppeteer = require("puppeteer");
 const knex = require("../../config/knex");
 
-const cadastrarUrl = async (req, res) => {
-  const { urlEnviada } = req.body;
+const registerUrl = async (req, res) => {
+  const { url } = req.body;
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto(urlEnviada);
+  await page.goto(url);
   const pageContent = await page.evaluate(() => {
     return {
       title: document.querySelector("head > title").textContent,
     };
   });
-
   await browser.close();
 
   try {
     const newRegister = await knex("links_salvos").insert({
-      url: urlEnviada,
+      url,
       title: pageContent.title,
     });
 
@@ -29,5 +28,5 @@ const cadastrarUrl = async (req, res) => {
 };
 
 module.exports = {
-  cadastrarUrl,
+  registerUrl,
 };

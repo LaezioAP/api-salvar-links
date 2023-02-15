@@ -1,8 +1,10 @@
 const urlInvalid = (req, res, next) => {
-  const { urlEnviada } = req.body;
+  const { url } = req.body;
 
   try {
-    new URL(urlEnviada);
+    if (!url) return next();
+
+    new URL(url);
     next();
   } catch (error) {
     return res.status(500).json("URL INVÁLIDA!");
