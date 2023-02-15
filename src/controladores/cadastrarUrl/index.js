@@ -24,7 +24,7 @@ const cadastrarUrl = async (req, res) => {
 
     return res.status(201).json("Link cadastrado com sucesso!");
   } catch (error) {
-    return res.status(500).json(`Erro interno no servidor`);
+    return res.status(500).json("Erro interno no servidor");
   }
 };
 
