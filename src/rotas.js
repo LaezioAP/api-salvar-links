@@ -6,8 +6,8 @@ const { excluirDado } = require("./controladores/excluir link");
 const { urlInvalid } = require("./middlewares/urlInvalid");
 const rotas = express();
 
-rotas.post("/cadastrarUrl", urlInvalid, cadastrarUrl);
 rotas.get("/home", listaDados);
+rotas.post("/cadastrarUrl", urlInvalid, cadastrarUrl);
 rotas.put("/home/:id", editarDado);
 rotas.delete("/home/:id", excluirDado);
 
