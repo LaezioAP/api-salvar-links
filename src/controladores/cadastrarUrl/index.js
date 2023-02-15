@@ -3,24 +3,21 @@ const knex = require("../../config/knex");
 
 const cadastrarUrl = async (req, res) => {
   const { urlEnviada } = req.body;
-
-  // PUPPETEER
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(urlEnviada);
+  const pageContent = await page.evaluate(() => {
+    return {
+      title: document.querySelector("head > title").textContent,
+    };
+  });
 
-  await page.waitForSelector(".css-1k5pqev");
-  const title = await page.$eval(
-    ".css-1k5pqev",
-    (element) => element.textContent
-  );
   await browser.close();
 
-  // BANCO DE DADOS
   try {
     const newRegister = await knex("links_salvos").insert({
       url: urlEnviada,
-      title,
+      title: pageContent.title,
     });
 
     if (!newRegister) return res.status(500).json("O link não foi cadastrado");
