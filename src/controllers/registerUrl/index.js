@@ -8,15 +8,17 @@ const registerUrl = async (req, res) => {
   if (!url) {
     return res.status(404).json("O campo é adiconar URL é obrigatório!");
   }
+
   const browser = await puppeteer.launch({
-    headless: true,
-    devtools: true,
-    args: [
-      "--disable-web-security",
-      "--disable-features=IsolateOrigins",
-      "--disable-site-isolation-trials",
-    ],
+    args: ["--disable-web-security"],
   });
+  // const browser = await puppeteer.launch({
+  //   headless: true,
+  //   devtools: true,
+  //   args: [
+  //     "--disable-web-security",
+  //   ],
+  // });
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitForSelector("head > title");
