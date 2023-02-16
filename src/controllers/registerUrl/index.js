@@ -11,7 +11,6 @@ const registerUrl = async (req, res) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
-  await page.waitForSelector("head > title")
   const pageContent = await page.evaluate(() => {
     return {
       title: document.querySelector("head > title").textContent,
