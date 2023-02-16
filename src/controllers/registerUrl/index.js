@@ -8,7 +8,9 @@ const registerUrl = async (req, res) => {
   if (!url) {
     return res.status(404).json("O campo é adiconar URL é obrigatório!");
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    executablePath: "/usr/bin/chromium-browser",
+  });
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitForSelector("head > title");
