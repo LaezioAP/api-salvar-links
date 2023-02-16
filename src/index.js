@@ -4,11 +4,7 @@ const cors = require("cors");
 const routes = require("./routes");
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://salve-seu-link.netlify.app/",
-  })
-);
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 

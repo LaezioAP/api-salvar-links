@@ -5,7 +5,8 @@ const registerUrl = async (req, res) => {
   const { url } = req.body;
   const { userLogged } = req;
 
-  if (!url) return res.status(404).json("O campo é adiconar URL é obrigatório!"); 
+  if (!url)
+    return res.status(404).json("O campo é adiconar URL é obrigatório!");
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -28,6 +29,7 @@ const registerUrl = async (req, res) => {
 
     return res.status(201).json("Link cadastrado com sucesso!");
   } catch (error) {
+    console.log(error);
     return res.status(500).json("Erro interno no servidor");
   }
 };
