@@ -1,10 +1,10 @@
 require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const routes = require("./routes");
-const app = express();
+let express = require("express");
+let cors = require("cors");
+let routes = require("./routes");
+let app = express();
 
-app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(routes);
 
