@@ -1,6 +1,16 @@
 const puppeteer = require("puppeteer");
 const knex = require("../../config/knex");
 
+const { join } = require("path");
+
+/**
+ * @type {import("puppeteer").Configuration}
+ */
+module.exports = {
+  // Changes the cache location for Puppeteer.
+  cacheDirectory: join(__dirname, ".cache", "puppeteer"),
+};
+
 const registerUrl = async (req, res) => {
   const { url } = req.body;
   const { userLogged } = req;
@@ -8,9 +18,7 @@ const registerUrl = async (req, res) => {
   if (!url) {
     return res.status(404).json("O campo é adiconar URL é obrigatório!");
   }
-  const browser = await puppeteer.launch({
-    executablePath: "/usr/bin/chromium-browser",
-  });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitForSelector("head > title");
