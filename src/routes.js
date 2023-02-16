@@ -14,10 +14,9 @@ routes.post("/login", loginUser);
 
 routes.use(loginValidation);
 
-routes.get("/home", getDados);
-
+routes.get("/dashboard", getDados);
 routes.post("/adicionar-url", urlInvalid, registerUrl);
-routes.put("/home/:id", urlInvalid, updateRegister);
-routes.delete("/home/:id", deleteRegister);
+routes.put("/dashboard/:id", urlInvalid, updateRegister);
+routes.delete("/dashboard/:id", deleteRegister);
 
 module.exports = routes;

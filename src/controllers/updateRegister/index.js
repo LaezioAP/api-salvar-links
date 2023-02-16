@@ -6,7 +6,7 @@ const updateRegister = async (req, res) => {
   const { userLogged } = req;
 
   if (!url && !title)
-    return res.status(404).json("Este campo deve ser preenchido");
+    return res.status(404).json("Pelo menos um campo deve ser preenchido!");
 
   try {
     const flowData = await knex("links_salvos")
