@@ -29,7 +29,6 @@ const registerUser = async (req, res) => {
 
     return res.status(200).json("Usuário cadastrado com sucesso!");
   } catch (error) {
-    console.log(error)
     return res.status(500).json("Erro interno no servidor");
   }
 };
