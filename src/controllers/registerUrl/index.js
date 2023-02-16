@@ -1,4 +1,4 @@
-import puppeteer from "puppeteer";
+const puppeteer = require("puppeteer");
 const knex = require("../../config/knex");
 
 const registerUrl = async (req, res) => {
@@ -11,7 +11,6 @@ const registerUrl = async (req, res) => {
   const browser = await puppeteer.launch({
     headless: true,
     devtools: true,
-    executablePath : '/opt/buildhome/.cache/puppeteer/',
     args: [
       "--disable-web-security",
       "--disable-features=IsolateOrigins",
