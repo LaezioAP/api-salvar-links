@@ -1,16 +1,6 @@
 const puppeteer = require("puppeteer");
 const knex = require("../../config/knex");
 
-const { join } = require("path");
-
-/**
- * @type {import("puppeteer").Configuration}
- */
-module.exports = {
-  // Changes the cache location for Puppeteer.
-  cacheDirectory: join(__dirname, ".cache", "puppeteer"),
-};
-
 const registerUrl = async (req, res) => {
   const { url } = req.body;
   const { userLogged } = req;
@@ -18,7 +8,15 @@ const registerUrl = async (req, res) => {
   if (!url) {
     return res.status(404).json("O campo é adiconar URL é obrigatório!");
   }
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    headless: true,
+    devtools: true,
+    args: [
+      "--disable-web-security",
+      "--disable-features=IsolateOrigins",
+      "--disable-site-isolation-trials",
+    ],
+  });
   const page = await browser.newPage();
   await page.goto(url);
   await page.waitForSelector("head > title");
