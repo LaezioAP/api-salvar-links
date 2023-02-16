@@ -5,9 +5,9 @@ const registerUrl = async (req, res) => {
   const { url } = req.body;
   const { userLogged } = req;
 
-  if (!url)
+  if (!url) {
     return res.status(404).json("O campo é adiconar URL é obrigatório!");
-
+  }
   const browser = await puppeteer.launch({
     headless: true,
     devtools: true,
