@@ -6,8 +6,7 @@ const app = express();
 
 app.use(
   cors({
-    origin:
-      "https://63ee90ea2b0627107431cb83--endearing-kelpie-15fa89.netlify.app",
+    origin: "https://salve-seu-link.netlify.app/",
   })
 );
 app.use(express.json());
