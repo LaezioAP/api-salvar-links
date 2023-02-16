@@ -1,8 +1,8 @@
 require("dotenv").config();
-let express = require("express");
-let cors = require("cors");
-let routes = require("./routes");
-let app = express();
+const express = require("express");
+const cors = require("cors");
+const routes = require("./routes");
+const app = express();
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
