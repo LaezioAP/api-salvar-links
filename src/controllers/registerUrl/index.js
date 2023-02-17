@@ -6,6 +6,7 @@ const axios = require("axios");
 const registerUrl = async (req, res) => {
   const { url } = req.body;
   const { userLogged } = req;
+
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
   const title = $("head > title").text();
