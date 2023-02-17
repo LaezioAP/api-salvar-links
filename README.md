@@ -1,12 +1,10 @@
-# API para Salvar Links
+# API para Salvar Links - Devnology - Teste Programa de Trainee
 <h2>Você pode acessar o site e testar sua funcionalidade atráves do link abaixo</h2>
 <p>Link para acessar o site: https://salve-seu-link.netlify.app/</p>
 <p>Repositorio do front-end: https://github.com/LaezioAP/front-end-api-salvar-links</p>
 <p>O Deploy do Back-End foi feito no site da Heroku</p>
 <p>O Deploy do Front-End foi feito no site da Netlify</p>
 <hr/>
-<h2>Devnology - Teste Programa de Trainee</h2>
-<hr>
 <h2>Objetivo: Desenvolva uma API gerenciar links, com a URL e um título/label. Os links também podem ser editados e excluídos.</h2>
 <ul>
   <li>Usuário pode criar conta</li>
@@ -16,6 +14,11 @@
   <li>Usuário consegue editar suas URL</li>
   <li>Usuário consegue acessar os links diretos de determinado registro que ele adicionou</li>
   <li>Usuario consegue sair do site</li>
+</ul>
+<hr>
+<h2>Banco de dados utilizado:</h2>
+<ul>
+  <li>PostgreSQL
 </ul>
 <hr>
 <h2>Bibliotecas utilizadas</h2>
